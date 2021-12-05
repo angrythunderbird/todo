@@ -1,0 +1,13 @@
+.header {
+  width: 100%;
+  margin: 0 auto 10px;
+  padding: 5px;
+  border-radius: 5px;
+  background-image: linear-gradient(90deg, #09203F 0%, #537895 100%);
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.header h1 {
+  margin: 0;
+}

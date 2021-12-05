@@ -2,7 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import AppHeader from './components/app-header';
 import SearchPanel from './components/search-panel';
+import TaskStatusFilter from './components/task-status-filter';
 import TodoList from './components/todo-list';
+
+import './index.css';
 
 const todoData = [
   {label: 'Снять обои', important: false},
@@ -12,8 +15,9 @@ const todoData = [
 
 const App = () => {
   return (
-    <div>
+    <div className="container">
       <AppHeader />
+      <TaskStatusFilter />
       <SearchPanel />
       <TodoList todos={todoData} />
       
