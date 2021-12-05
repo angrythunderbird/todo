@@ -37,7 +37,8 @@
   box-sizing: border-box;
 }
 
-.todo-list-item-btn {
+.todo-list-item button {
+  margin: 0 0 0 10px;
+  width: 40px;
   border: none;
-  /* justify-self: flex-end; */
 }

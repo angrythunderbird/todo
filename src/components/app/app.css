@@ -8,5 +8,9 @@
   flex-direction: column;
   justify-content: stretch;
   align-items: stretch;
+}
 
+.btn {
+  cursor: pointer;
+  outline: transparent;
 }
