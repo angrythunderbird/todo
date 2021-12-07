@@ -6,9 +6,9 @@ import TodoList from '../todo-list/';
 import './app.css';
 
 const todoData = [
-  { label: 'Снять обои', important: false },
-  { label: 'Снять штукатурку', important: true },
-  { label: 'Доучить основы React', important: false }
+  { label: 'Снять обои', important: false, id: 1 },
+  { label: 'Снять штукатурку', important: true, id: 2 },
+  { label: 'Доучить основы React', important: false, id: 3 }
 ];
 
 const App = () => {

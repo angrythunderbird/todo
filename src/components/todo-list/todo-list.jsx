@@ -5,14 +5,10 @@ import './todo-list.css';
 
 const TodoList = ({ todos }) => {
 
-  const todoElements = todos.map((item, i) => {
-    const listItemStyle = item.important ? 'list-group-item-primary' : 'list-group-item-secondary';
-
+  const todoElements = todos.map(item => {
+    // const listItemStyle = item.important ? 'list-group-item-primary' : 'list-group-item-secondary';
     return (
-      <li key={i.toString()} className={"list-group-item item shadow-sm rounded " + listItemStyle}>
-        <span className="marker"></span>
-        <TodoListItem { ...item } />
-      </li>
+      <TodoListItem { ...item } key={item.id.toString()} />
     )
   })
 
