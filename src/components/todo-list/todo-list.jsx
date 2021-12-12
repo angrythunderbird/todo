@@ -3,12 +3,13 @@ import TodoListItem from '../todo-list-item/todo-list-item';
 import './todo-list.css';
 
 
-const TodoList = ({ todos }) => {
+const TodoList = ({ todos, onDelete }) => {
 
   const todoElements = todos.map(item => {
-    // const listItemStyle = item.important ? 'list-group-item-primary' : 'list-group-item-secondary';
     return (
-      <TodoListItem { ...item } key={item.id.toString()} />
+      <TodoListItem { ...item }
+      key={item.id.toString()}
+      onDelete={() => onDelete(item.id)} />
     )
   })
 
