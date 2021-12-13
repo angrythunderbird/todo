@@ -1,0 +1,15 @@
+.item-add-form {
+  margin: 0 10px 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-add-input {
+  display: block;
+}
+
+.item-add-form-btn {
+  display: block;
+  width: 30%;
+}

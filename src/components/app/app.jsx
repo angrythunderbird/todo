@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AppHeader from '../app-header/';
+import ItemAddForm from '../item-add-form';
 import SearchPanel from '../search-panel/';
 import TaskStatusFilter from '../task-status-filter/';
 import TodoList from '../todo-list/';
@@ -7,6 +8,8 @@ import TodoList from '../todo-list/';
 import './app.css';
 
 export default class App extends Component {
+  maxId = 100;
+
   state = {
     todoData: [
       { label: 'Снять обои', important: false, id: 11 },
@@ -26,6 +29,20 @@ export default class App extends Component {
     });
   };
 
+  addItem = (text) => {
+    const newItem = {
+      label: text,
+      important: false,
+      id: this.maxId++
+    };
+    this.setState(({ todoData }) => {
+      const newArr = [...todoData, newItem];
+      return {
+        todoData: newArr
+      }
+    });
+  }
+
   render() {
     return (
       <div className="container">
@@ -34,6 +51,7 @@ export default class App extends Component {
         <SearchPanel />
         <TodoList todos={this.state.todoData}
           onDelete={this.deleteItem} />
+        <ItemAddForm onItemAdded={this.addItem} />
       </div>
     );
   }
