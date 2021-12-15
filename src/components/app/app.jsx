@@ -43,6 +43,14 @@ export default class App extends Component {
     });
   }
 
+  onToogleImportant = (id) => {
+    console.log('I', id);
+  }
+
+  onToogleDone = (id) => {
+    console.log('D', id);
+  }
+
   render() {
     return (
       <div className="container">
@@ -50,7 +58,9 @@ export default class App extends Component {
         <TaskStatusFilter />
         <SearchPanel />
         <TodoList todos={this.state.todoData}
-          onDelete={this.deleteItem} />
+          onDelete={this.deleteItem}
+          onToogleImportant={this.onToogleImportant}
+          onToogleDone={this.onToogleDone} />
         <ItemAddForm onItemAdded={this.addItem} />
       </div>
     );
