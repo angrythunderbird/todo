@@ -8,15 +8,22 @@ import TodoList from '../todo-list/';
 import './app.css';
 
 export default class App extends Component {
-  maxId = 100;
+  maxId = 1;
 
   state = {
     todoData: [
-      { label: 'Снять обои', important: false, id: 11 },
-      { label: 'Снять штукатурку', important: true, id: 22 },
-      { label: 'Доучить основы React', important: false, id: 33 }
+      this.createTodoItem('Ok, let`s go')
     ]
   };
+
+  createTodoItem(label) {
+    return {
+      label,
+      important: false,
+      done: false,
+      id: this.maxId++
+    };
+  }
 
   deleteItem = (id) => {
     this.setState(({ todoData }) => {
@@ -30,11 +37,7 @@ export default class App extends Component {
   };
 
   addItem = (text) => {
-    const newItem = {
-      label: text,
-      important: false,
-      id: this.maxId++
-    };
+    const newItem = this.createTodoItem(text);
     this.setState(({ todoData }) => {
       const newArr = [...todoData, newItem];
       return {
@@ -43,21 +46,41 @@ export default class App extends Component {
     });
   }
 
+  toogleProperty(arr, id, propName) {
+    const idx = arr.findIndex((el) => el.id === id);
+    const oldItem = arr[idx];
+    const newItem = { ...oldItem, [propName]: !oldItem[propName] };
+    return [...arr.slice(0, idx), newItem, ...arr.slice(idx + 1)];
+  }
+
   onToogleImportant = (id) => {
-    console.log('I', id);
+    this.setState(({ todoData }) => {
+      return {
+        todoData: this.toogleProperty(todoData, id, 'important')
+      };
+    });
   }
 
   onToogleDone = (id) => {
-    console.log('D', id);
+    this.setState(({ todoData }) => {
+      return {
+        todoData: this.toogleProperty(todoData, id, 'done')
+      };
+    });
   }
 
   render() {
+
+    const {todoData} = this.state;
+    const doneCount = todoData.filter((el) => el.done).length;
+    const toDoCount = todoData.length - doneCount;
+
     return (
       <div className="container">
-        <AppHeader />
+        <AppHeader toDo={toDoCount} done={doneCount} />
         <TaskStatusFilter />
         <SearchPanel />
-        <TodoList todos={this.state.todoData}
+        <TodoList todos={todoData}
           onDelete={this.deleteItem}
           onToogleImportant={this.onToogleImportant}
           onToogleDone={this.onToogleDone} />

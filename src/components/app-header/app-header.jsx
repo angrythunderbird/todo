@@ -9,12 +9,13 @@ import './app-header.css';
 // }
 
 const AppHeader = ({ toDo, done }) => {
+  // if (toDo === 0 & done === 0) {}
   return (
     <div className="header">
       <h1>
         Do not put off until tomorrow what you can do the day after tomorrow
       </h1>
-      <h2>{toDo} to do, {done} done</h2>
+      <h2 className='todos-counter'>{toDo} to do, {done} done</h2>
     </div>
   )
 }
