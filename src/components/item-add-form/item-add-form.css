@@ -9,6 +9,14 @@
   display: block;
 }
 
+.input-alarm::placeholder {
+  color: yellow;
+}
+
+.input-alarm {
+  background-color: red;
+}
+
 .item-add-form-btn {
   display: block;
   width: 30%;
